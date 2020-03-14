@@ -32,19 +32,29 @@ M-x cider-jack-in-cljs => 选择 shadow-cljs => 选择 node-repl
 M-x cider-connect-sibling-cljs
 ```
 
-### 6. `C-x C-e`执行`src/mini_program_cljs_example/core.cljs`,确认mini-program-cljs能正常连接到mini-program-cljs-example的repl来
+### 6. 启动Repl开发: `C-x C-e`执行`src/mini_program_cljs_example/core.cljs`,确认mini-program-cljs能正常连接到mini-program-cljs-example的repl来
 
 ``` clojure
 ;; 开发mini-program-cljs库时需要引用miniprogram-automator模拟器
 (ns mini-program-cljs.core
+   ...
    (:require [miniprogram-automator :as automator]))
 
+;; 获取模拟器的变量mini-program
 (reset-mini-program automator)
 
-(wx-fun-dev @mini-program checkSession)
+;; mini-program 成功获取的样子
+;; => #object[cljs.core.Atom {:val #object[MiniProgram [object Object]]}]
 
-(call-promise-1
-  (fn [res] (prn "=====" res))  ;;=> "=====" #js {:errMsg "checkSession:ok"}
-  (wx-check-session :success (fn [res] res)))
-
+;; 测试模拟器变量是否正常
+(.callWxMethod @mini-program
+    "showToast"
+    #js {:title "Hello, mini-program-cljs-example!"
+         :icon "none"
+         :mask false
+         :duration 10000})
 ```
+
+* 成功设置好的开发环境如下截图
+
+![](https://github.com/chanshunli/mini-program-cljs-example/raw/master/mini-program-cljs-example.png)
