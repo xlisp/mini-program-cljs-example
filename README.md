@@ -1,8 +1,10 @@
-## 成为mini-program-cljs开发者的示例项目和文档(MacOS和Emacs开发者)
+# [mini-program-cljs(ClojureScript微信小程序库)](https://github.com/chanshunli/wechat-clj/tree/master/mini-program-cljs)开发者的示例项目和文档
+
+*本文档适用于: MacOS和Emacs开发者*
 
 ### 1. git clone本项目下来到本地,第一次用微信开发者工具打开
 
-### 2. 填入本示例项目的deps.edn, shadow-cljs.edn 和 package.json
+### 2. 填入下面配置到deps.edn文件
 
 ```clojure
 ;; deps.edn 需要填入你本地的mini-program-cljs库的路径
