@@ -1,0 +1,9 @@
+{:deps   {:aliases [:cljs]}
+ :source-paths ["src"]
+
+ :dependencies []
+
+ :builds {:app {:target :npm-module
+                :output-dir "node_modules/clj-miniprogram"
+                :entries []
+                :compiler-options {:optimizations :advanced}}}}
