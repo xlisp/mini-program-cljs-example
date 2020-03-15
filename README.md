@@ -2,7 +2,9 @@
 
 *本文档适用于: MacOS和Emacs开发者*
 
-### 1. git clone本项目下来到本地,第一次用微信开发者工具打开
+### 1. git clone本项目下来到本地,第一次用微信开发者工具打开, 打开安全设置
+
+![](https://github.com/chanshunli/mini-program-cljs-example/raw/master/security_settings.png)
 
 ### 2. 填入下面配置到deps.edn文件
 
