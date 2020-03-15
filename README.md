@@ -2,7 +2,7 @@
 
 *本文档适用于: MacOS和Emacs开发者*
 
-### 1. git clone本项目下来到本地,第一次用微信开发者工具打开, 打开安全设置
+### 1. git clone本项目下来到本地,第一次用微信开发者工具打开, 打开安全设置, 然后完全关闭微信开发者工具
 
 ![](https://github.com/chanshunli/mini-program-cljs-example/raw/master/security_settings.png)
 
@@ -17,17 +17,19 @@ mini-program-cljs      {:local/root "/Users/clojure/CljPro/wechat-clj/mini-progr
 ### 3. 执行安装模拟器
 
 ``` shell
-./npm_build.sh
+# 需要填入mini-program-cljs-example的项目路径
+./npm_build.sh ~/WeChatProjects/mini-program-cljs-example
 
 ```
 
 ### 4. 启动开发者的模拟器
 
 ``` shell
-./open_cli_ws.sh
+# 需要填入mini-program-cljs-example的项目路径
+./open_cli_ws.sh ~/WeChatProjects/mini-program-cljs-example
 ```
 
-### 5. 打开`src/mini_program_cljs_example/core.cljs`,并执行下面命令
+### 5. Emacs打开`src/mini_program_cljs_example/core.cljs`,并在该文件buffer下执行下面命令
 
 ``` shell
 M-x cider-jack-in-cljs => 选择 shadow-cljs => 选择 node-repl
