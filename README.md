@@ -1,10 +1,12 @@
 # [mini-program-cljs(ClojureScript微信小程序库)](https://github.com/chanshunli/wechat-clj/tree/master/mini-program-cljs)开发者的示例项目和文档
 
-*本文档适用于: MacOS和Emacs开发者*
+*本文档适用于: MacOS和Emacs开发者, Linux微信开发者工具基于Wine编译小程序速度太慢*
+
+[Youtube 演示视频](https://www.youtube.com/watch?v=Rmq3hCjdI6M)
 
 ### 1. git clone本项目和[wechat-clj](https://github.com/chanshunli/wechat-clj)下来到本地,第一次用微信开发者工具打开本项目(即导入本项目到开发者工具), 并打开安全设置, 然后完全关闭微信开发者工具(请确保进程关闭)
 
-![](https://github.com/chanshunli/mini-program-cljs-example/raw/master/security_settings.png)
+![Youtube演示视频](https://github.com/chanshunli/mini-program-cljs-example/raw/master/security_settings.png)
 
 ### 2. 填入下面配置到deps.edn文件
 
