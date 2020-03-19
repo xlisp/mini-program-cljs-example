@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
-    "mini-program-cljs": "^0.3.1"
+    "mini-program-cljs": "^0.4.0"
   },
   "devDependencies": {
     "miniprogram-automator": "^0.9.1",

@@ -2,7 +2,7 @@
 
 *本文档适用于: MacOS和Emacs开发者*
 
-### 1. git clone本项目下来到本地,第一次用微信开发者工具打开, 打开安全设置, 然后完全关闭微信开发者工具
+### 1. git clone本项目和wechat-clj(https://github.com/chanshunli/wechat-cl)下来到本地,第一次用微信开发者工具打开, 打开安全设置, 然后完全关闭微信开发者工具(请确保进程关闭)
 
 ![](https://github.com/chanshunli/mini-program-cljs-example/raw/master/security_settings.png)
 
@@ -38,27 +38,42 @@ M-x cider-jack-in-cljs => 选择 shadow-cljs => 选择 node-repl
 M-x cider-connect-sibling-cljs
 ```
 
-### 6. 启动Repl开发: `C-x C-e`执行`src/mini_program_cljs_example/core.cljs`,确认mini-program-cljs能正常连接到mini-program-cljs-example的repl来
+### 6. 启动Repl开发: `C-x C-e`执行`src/mini_program_cljs_example/core.cljs`中的代码,确认mini-program-cljs能正常连接到mini-program-cljs-example的repl来
 
 ``` clojure
-;; 开发mini-program-cljs库时需要引用miniprogram-automator模拟器
-(ns mini-program-cljs.core
-   ...
-   (:require [miniprogram-automator :as automator]))
 
-;; 获取模拟器的变量mini-program
+(ns mini-program-cljs-example.core
+  (:require-macros
+   [mini-program-cljs.macro
+    :refer [call-promise-1 wx-fun-dev wx-fun evaluate-args c-log]])
+  (:require
+   ;; 开发mini-program-cljs库时需要引用miniprogram-automator模拟器
+   [miniprogram-automator :as automator]
+   [mini-program-cljs.core :as mini-cljs]
+   [mini-program-cljs.js-wx :refer
+    [mini-program current-page] :as jswx]))
+
+;; 1. 初始化mini-program变量: 操作微信开发者工具的模拟器的变量mini-program
 (reset-mini-program automator)
+
+;; 2. 初始化current-page变量: 当前微信小程序的页面
+(reset-current-page)
 
 ;; mini-program 成功获取的样子
 ;; => #object[cljs.core.Atom {:val #object[MiniProgram [object Object]]}]
 
-;; 测试模拟器变量是否正常
-(.callWxMethod @mini-program
-    "showToast"
-    #js {:title "Hello, mini-program-cljs-example!"
-         :icon "none"
-         :mask false
-         :duration 10000})
+;; 打印日志到微信开发者控制台
+(c-log @mini-program "aaaa" "bbb" "cccc"
+  #js {:aaa 111 :bb "222dsadsa" :cc #js {:ooo 11 :bb "33"}})
+
+;; 日志弹窗到页面
+(log #js {:aa 11} #js {:bb 22 :cc 33})
+
+;; 万能的eval
+(evaluate-args @mini-program
+  (fn [arg1 arg2]  (js/console.log arg1 "," arg2))
+  "Hi, " #js {:name "mini-program-cljs"})
+
 ```
 
 * 成功设置好的开发环境如下截图
