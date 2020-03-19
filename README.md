@@ -35,7 +35,7 @@ mini-program-cljs      {:local/root "/Users/clojure/CljPro/wechat-clj/mini-progr
 M-x cider-jack-in-cljs => 选择 shadow-cljs => 选择 node-repl
 
 ;; 如需开发宏,在cljs的cider repl下执行:
-M-x cider-connect-sibling-cljs
+M-x cider-connect-sibling-clj
 ```
 
 ### 6. 启动Repl开发: `C-x C-e`执行`src/mini_program_cljs_example/core.cljs`中的代码,确认mini-program-cljs能正常连接到mini-program-cljs-example的repl来
