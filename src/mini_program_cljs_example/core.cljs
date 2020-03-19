@@ -26,7 +26,7 @@
   #js {:aaa 111 :bb "222dsadsa" :cc #js {:ooo 11 :bb "33"}})
 
 ;; 日志弹窗到页面
-(jswx/log #js {:aa 11} #js {:bb 22 :cc 33})
+(jswx/log "Hi, " #js {:name "mini-program-cljs"})
 
 ;; 万能的eval
 (evaluate-args @mini-program
