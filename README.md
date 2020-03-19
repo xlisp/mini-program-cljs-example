@@ -2,7 +2,7 @@
 
 *本文档适用于: MacOS和Emacs开发者*
 
-### 1. git clone本项目和wechat-clj(https://github.com/chanshunli/wechat-cl)下来到本地,第一次用微信开发者工具打开本项目(即导入本项目到开发者工具), 并打开安全设置, 然后完全关闭微信开发者工具(请确保进程关闭)
+### 1. git clone本项目和[wechat-clj](https://github.com/chanshunli/wechat-clj)下来到本地,第一次用微信开发者工具打开本项目(即导入本项目到开发者工具), 并打开安全设置, 然后完全关闭微信开发者工具(请确保进程关闭)
 
 ![](https://github.com/chanshunli/mini-program-cljs-example/raw/master/security_settings.png)
 
