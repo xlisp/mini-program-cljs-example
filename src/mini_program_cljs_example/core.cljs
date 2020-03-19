@@ -10,20 +10,23 @@
     [mini-program current-page] :as jswx]))
 
 ;; 1. 初始化mini-program变量: 操作微信开发者工具的模拟器的变量mini-program
-(reset-mini-program automator)
+(jswx/reset-mini-program automator)
 
 ;; 2. 初始化current-page变量: 当前微信小程序的页面
-(reset-current-page)
+(jswx/reset-current-page)
 
 ;; mini-program 成功获取的样子
 ;; => #object[cljs.core.Atom {:val #object[MiniProgram [object Object]]}]
+
+;; current-page 成功获取的样子
+;; => #object[cljs.core.Atom {:val #object[Page [object Object]]}]#object[cljs.core.Atom {:val #object[Page [object Object]]}];; => #object[cljs.core.Atom {:val #object[Page [object Object]]}]
 
 ;; 打印日志到微信开发者控制台
 (c-log @mini-program "aaaa" "bbb" "cccc"
   #js {:aaa 111 :bb "222dsadsa" :cc #js {:ooo 11 :bb "33"}})
 
 ;; 日志弹窗到页面
-(log #js {:aa 11} #js {:bb 22 :cc 33})
+(jswx/log #js {:aa 11} #js {:bb 22 :cc 33})
 
 ;; 万能的eval
 (evaluate-args @mini-program
