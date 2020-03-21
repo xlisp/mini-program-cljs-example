@@ -81,6 +81,57 @@ M-x cider-connect-sibling-clj
 
 ```
 
+### evaluate-args 使用: 和微信开发者工具的控制台是完全联通的,但是不能用cljs.core方法在里面测试(因为goog导入不了)
+
+* 传入cljs的函数作为参数进去会变成字符串,编译后的cljs代码的字符串
+* 传入js的函数,会变成native code的字符串
+
+``` clojure
+(evaluate-args @mini-program
+  (fn [arg]
+    (js/console.log "---"
+      (let [pages (js/getCurrentPages)
+            len (.-length pages)
+            current-page (aget pages (dec len))]
+        current-page)
+      )
+    )
+  #js [1 2 3])
+;;=> 打印出来 page对象了
+
+(evaluate-args @mini-program
+  (fn [arg]
+    (js/console.log "---"
+      (let [app (js/getApp)]
+        (.-globalData app)
+        )
+      )
+    )
+  #js [])
+;;=> 打印出来app.globalData
+
+
+;;变量共享: 可以在控制台上看到这个变量
+(evaluate-args @mini-program
+  (fn [arg1]
+    (js/console.log "---"
+      (set! js/aabb arg1)
+      )
+    )
+  #js [1 2 3])
+
+;; this使用: 下面代码会打印出来`window {...}`
+(evaluate-args @mini-program
+  (fn [arg1]
+    (js/console.log "---"
+      (this-as this
+        this)
+      )
+    )
+  #js [])
+
+```
+
 * 成功设置好的开发环境如下截图
 
 ![](https://github.com/chanshunli/mini-program-cljs-example/raw/master/mini-program-cljs-example.png)
