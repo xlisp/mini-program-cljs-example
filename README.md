@@ -135,3 +135,9 @@ M-x cider-connect-sibling-clj
 * 成功设置好的开发环境如下截图
 
 ![](https://github.com/chanshunli/mini-program-cljs-example/raw/master/mini-program-cljs-example.png)
+
+### 基于S表达式Postwalk分离出来三种不同的代码执行环境: 关于evaluate-args(微信控制台环境) 和 wx.* 的环境 还有 current-page内部, 三者的开发环境的Repl开发打通方案
+
+* 三个环境的混合wx,page内部,控制台, 通过错误分析来S表达式分开来分别执行后组合起来
+* evaluate-args内部没有cljs的执行环境,所以如果catch到cljs未定义的错误,那么就分离出来需要cljs的部分和不需要cljs的部分, 不需要cljs的部分执行结束后保存到中间变量里面, 将结果传递出来给cljs的代码处理
+* S表达式解析和Postwalk新的cljs解释器的构建,分离出来代码需要不同的执行环境,执行并且返回结果最终组合起来: repl一个本地环境模拟出来三种环境才是对的选择,解耦甚至可以脱离微信开发者工具你的开发的解释工具还能解释所有情况,那么这就是一个合格的开发环境了
